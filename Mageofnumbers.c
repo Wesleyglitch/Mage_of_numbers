@@ -6,75 +6,75 @@
 int
 main(void)
 {
-    // seed do PRNG
+    // seed of PRNG
     srand(time(NULL));
 
-    // Número pseudo-aleatório entre [0; 1023]
-    int spellbreaker = rand() % 1024;
+    // Random number between [0; 1023]
+    int sb = rand() % 1024;
 
-    // Início
-    printf(" Olá, eu sou o mago dos numeros\n você está preso(a) em meu feitiço\n para se libertar, diga-me o número que estou pensando hi hi hi\n \n Dica: está entre [0; 1023]\n");
+    // Apresentation
+    printf(" Hello, i am the mage of numbers\n you are stuck in my spell\n To break the spell tell me the number i'm thinking hi hi hi\n \n Tip: its between [0; 1023]\n");
 
    while (true)
   {
 
-    // Número escolhido
+    // Choosen number
     double numE = GetDouble();
     
-    // Variáveis de Distância numérica (sb:Spellbreaker, ma:Mais, me:Menos)
-    double sb15ma = spellbreaker + 15;
-    double sb15me = spellbreaker - 15;
-    double sb60ma = spellbreaker + 60;
-    double sb60me = spellbreaker - 60;
-    double sb240ma = spellbreaker + 240;
-    double sb240me = spellbreaker -240;
-    double sb480ma = spellbreaker + 480;
-    double sb480me = spellbreaker - 480;
+    // Numeric distance variables (sb:Spellbreaker, m:more, l:less)
+    double sb15m = sb + 15;
+    double sb15l = sb - 15;
+    double sb60m = sb + 60;
+    double sb60l = sb - 60;
+    double sb240m = sb + 240;
+    double sb240l = sb -240;
+    double sb480m = sb + 480;
+    double sb480l = sb - 480;
 
-    // Distância de 15 casas
-    if (numE > spellbreaker && numE <= sb15ma && numE != 666 && numE != 24 && numE <= 1023|| numE != 666 && numE != 24 && numE < spellbreaker && numE >= sb15me && numE >= 0)
+    // Between (numE, 15]
+    if (numE > sb && numE <= sb15m && numE != 666 && numE != 24 && numE <= 1023|| numE != 666 && numE != 24 && numE < sb && numE >= sb15l && numE >= 0)
     {
-     printf("Passou bem perto em!\n");
+     printf("It was close!\n");
     }
 
-    // Distância entre 60 e 15 casas
-    else if (numE > sb15ma && numE <= sb60ma && numE <= 1023 && numE != 24 && numE != 666)
+    // Between (15, 60]
+    else if (numE > sb15m && numE <= sb60m && numE <= 1023 && numE != 24 && numE != 666)
     {
-     printf("Um pouco menos jovem, tenha calma\n");
+     printf("a little less, young man take it easy\n");
     }
-    else if (numE < sb15me && numE >= sb60me && numE >= 0 && numE != 24 && numE != 666)
+    else if (numE < sb15l && numE >= sb60l && numE >= 0 && numE != 24 && numE != 666)
     {
-     printf("Aumente o número, vamos, você consegue\n");
-    }
-
-    // Distância entre 240 e 60 casas
-    else if (numE > sb60ma && numE <= sb240ma && numE <= 1023 && numE != 24 && numE != 666 || numE != 24 && numE != 666 && numE < sb60me && numE >= sb240me && numE >= 0)
-    {
-     printf("Ops!, errou, continue usando sua intuição você está no caminho certo\n");
+     printf("increase the number, let's do it\n");
     }
 
-    // Distância entre 480 e 240 casas
-    else if (numE > sb240ma && numE <= sb480ma && numE <= 1023 && numE != 24 && numE != 666 || numE < sb240me && numE >= sb480me && numE >=0 && numE != 24 && numE != 666)
+    // Between (60, 240]
+    else if (numE > sb60m && numE <= sb240m && numE <= 1023 && numE != 24 && numE != 666 || numE != 24 && numE != 666 && numE < sb60l && numE >= sb240l && numE >= 0)
     {
-     printf("Errou, recomendo continuar tentando\n");
+     printf("Oops !, wrong, keep using your intuition you are on the right track\n");
     }
 
-    // Distância maior do que 480 casas
-    else if (numE > sb480ma && numE <= 1023 && numE != 24 && numE != 666 || numE < sb480me && numE >= 0 && numE != 24 && numE != 666)
+    // Between (240, 480]
+    else if (numE > sb240m && numE <= sb480m && numE <= 1023 && numE != 24 && numE != 666 || numE < sb240l && numE >= sb480l && numE >=0 && numE != 24 && numE != 666)
     {
-     printf("Errou feio, errou rude\n");
+     printf("Wrong, I recommend to keep trying\n");
     }
 
-    // Conjunto dos Naturais
+    // Greater than 480
+    else if (numE > sb480m && numE <= 1023 && numE != 24 && numE != 666 || numE < sb480l && numE >= 0 && numE != 24 && numE != 666)
+    {
+     printf("Wrong ugly, wrong rude\n");
+    }
+
+    // Positive numbers
     else if (numE < 0)
     {
-     printf("Não chute números negativos, idiota!  >:( \n ");
+     printf("Don't kick negative numbers, idiot!  >:( \n ");
     }
 
-    // Limite das possibilidades
+    // Limit
     else if (numE > 1023)
     {
-     printf("O limite é até 1023, não tente me sacanear\n");
+     printf("The limit is 1023, don't try to screw me\n");
     }
 
     //  ͡° ͜ʖ ͡°
@@ -83,16 +83,16 @@ main(void)
      printf(" ͡° ͜ʖ ͡°\n");
     }
 
-    // Número da besta
+    // Number of the beast
     else if (numE == 666)
     {
      printf ("👁 \n");
     }
 
-    // Número correto para quebrar o feitiço
+    // Spellbreaker
     else
     {
-     printf("Parabéns, você está livre ( ✧≖ ͜ʖ≖)\n");
+     printf("Congratulations, you are free ( ✧≖ ͜ʖ≖)\n");
      return(0);
     }
   }
